@@ -11,13 +11,25 @@
         </div>
         <div >
             <div class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Technology</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Automotive</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Finance</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Politics</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Culture</a>
-                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Sports</a>
+                <div v-for="categorie in postsStore.categories" :key="categorie.id" href="">
+                    <a href="" class="px-2">{{categorie.title}}</a>
+                </div>
+                
             </div>
         </div>
     </nav>
 </template>
+
+<script setup lang="ts">
+
+import { usePostsStore } from "src/stores/posts";
+import { onBeforeMount } from "vue";
+
+const postsStore = usePostsStore()
+
+
+onBeforeMount(() => {
+    postsStore.getCategoriesAction();
+})
+
+</script>

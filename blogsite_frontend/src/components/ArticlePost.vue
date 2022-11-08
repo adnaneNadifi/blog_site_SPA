@@ -1,17 +1,26 @@
 <template>
   <article class="flex flex-col shadow my-4">
-                <!-- Article Image -->
                 <a href="#" class="hover:opacity-75">
                     <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1">
                 </a>
+                <p>id : {{article.id}}</p>
                 <div class="bg-white flex flex-col justify-start p-6">
-                    <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">Technology</a>
-                    <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</a>
-                    <p href="#" class="text-sm pb-3">
-                        By <a href="#" class="font-semibold hover:text-gray-800">David Grzyb</a>, Published on April 25th, 2020
-                    </p>
-                    <a href="#" class="pb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna..</a>
+                    <div class="flex-col pb-3">
+                        <a v-for="category in  article.categories" :key="category.id" href="#" class="text-blue-700 text-sm font-bold uppercase pr-4">{{category.title}}</a>
+                    </div>
+                    
+                    <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">{{article.title}}</a>
+                    <router-link to="/article-page/2">to article page</router-link>
+                    <a href="#" class="mb-2 line-clamp-2">{{article.content}}</a>
+                    
                     <a href="#" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
                 </div>
             </article>
 </template>
+<script setup>
+
+const post = defineProps({
+    article: Object,
+})
+
+</script>
