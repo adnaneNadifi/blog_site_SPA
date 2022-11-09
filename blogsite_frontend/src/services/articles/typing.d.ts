@@ -5,10 +5,10 @@ declare namespace API {
     };
 
     type Article = {
-        id:number
+        id:number,
         title:string;
         content:string;
-        category:Category;
+        categories:Category;
     };
 
     type ArticleData = Array<Article>;

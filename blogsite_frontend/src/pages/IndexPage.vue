@@ -1,6 +1,4 @@
 <template>
-    <MainNavbar/>
-    <TopicNavbar/>
     <div class="container mx-auto flex flex-wrap py-6">
         <!-- Posts Section -->
         <section class="w-full md:w-2/3 flex flex-col items-center px-3">
@@ -9,7 +7,7 @@
                 <ArticlePost  :article="post" />
             </div>
             
-
+            
 
             <!-- Pagination -->
             <div class="flex items-center py-8">
@@ -22,13 +20,10 @@
 
        <SideBar/>
     </div>
-    <MainFooter/>
 </template>
 
 <script setup lang="ts">
-import MainNavbar from "src/components/MainNavbar.vue";
-import TopicNavbar from "src/components/TopicNavbar.vue";
-import MainFooter from "src/components/MainFooter.vue";
+
 import SideBar from "src/components/SideBar.vue"
 import ArticlePost from "src/components/ArticlePost.vue"
 import { usePostsStore } from "src/stores/posts";
@@ -36,9 +31,5 @@ import { onBeforeMount } from "vue";
 
 const postsStore = usePostsStore()
 
-
-onBeforeMount(() => {
-    postsStore.getPostsAction();
-})
 
 </script>

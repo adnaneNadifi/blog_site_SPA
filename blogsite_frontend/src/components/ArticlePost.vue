@@ -10,7 +10,7 @@
                     </div>
                     
                     <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">{{article.title}}</a>
-                    <router-link to="/article-page/2">to article page</router-link>
+                    <router-link @click="store.getPostAction(article.id)" :to="{name:'article',params:{id:article.id}}">to article page</router-link>
                     <a href="#" class="mb-2 line-clamp-2">{{article.content}}</a>
                     
                     <a href="#" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
@@ -18,9 +18,12 @@
             </article>
 </template>
 <script setup>
+import { usePostsStore } from "src/stores/posts";
+const store = usePostsStore()
 
 const post = defineProps({
     article: Object,
 })
+
 
 </script>

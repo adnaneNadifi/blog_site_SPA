@@ -1,14 +1,27 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+
+  <div v-if="isLoading">
+    Loading..
+  </div>
+  <q-layout v-else view="lHh Lpr lFf">
+    <MainNavbar/>
+    <topic-navbar></topic-navbar>
     <q-page-container>
       <router-view />
     </q-page-container>
+    <MainFooter/>
   </q-layout>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import EssentialLink, { EssentialLinkProps } from 'components/EssentialLink.vue';
+import { EssentialLinkProps } from 'components/EssentialLink.vue';
+
+import MainNavbar from "src/components/MainNavbar.vue";
+import TopicNavbar from "src/components/TopicNavbar.vue";
+import MainFooter from "src/components/MainFooter.vue";
+import { usePostsStore } from "src/stores/posts";
+import { onBeforeMount, onMounted} from "vue";
 
 const essentialLinks: EssentialLinkProps[] = [
   {
@@ -55,9 +68,21 @@ const essentialLinks: EssentialLinkProps[] = [
   }
 ];
 
-const leftDrawerOpen = ref(false)
+const leftDrawerOpen = ref(false);
+const isLoading = ref(true);
 
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value
 }
+
+const postsStore = usePostsStore()
+
+
+onBeforeMount( () => {
+    postsStore.getPostsAction().then(()=>{
+      isLoading.value = false;
+    });
+})
+
+
 </script>
