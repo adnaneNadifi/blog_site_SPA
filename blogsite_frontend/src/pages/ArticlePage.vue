@@ -11,8 +11,7 @@
                 </a>
                 <div class="bg-white flex flex-col justify-start p-6">
                     <!-- category -->
-                    {{article.categoris}}
-                    <a v-for="category in article.category" :key="category.id" class="text-blue-700 text-sm font-bold uppercase pb-4">{{category.title}}</a>
+                    <a v-for="category in article.categories" :key="category.id" class="text-blue-700 text-sm font-bold uppercase pb-4">{{category.title}}</a>
                     <!-- title -->
                     <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">{{article.title}}</a>
                     <!-- content -->
@@ -33,14 +32,21 @@
        <SideBar/>
     </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import SideBar from "src/components/SideBar.vue";
 import { usePostsStore } from "src/stores/posts";
-import { onMounted } from "vue";
+import { useRoute } from "vue-router";
+import { ref,onBeforeMount} from "vue";
+import { getArticle } from "src/services/articles/api";
 
-const store = usePostsStore()
-const article = store.Article
-console.log('inside article');
-console.log(article);
+const route = useRoute();
+const article = ref({} as API.Article )
+
+onBeforeMount(async () => {
+    const id = parseInt(route.params.id as string);
+    await getArticle(id).then((res)=>{
+        article.value = res.data
+    })
+})
 
 </script>

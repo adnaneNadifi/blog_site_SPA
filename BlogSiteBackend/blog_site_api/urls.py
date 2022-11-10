@@ -8,6 +8,7 @@ router.register(r'blog_posts', views.BlogPostViewSet, basename="todoapi")
 
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
-    path('categories/',views.CategoryViewSet.as_view(),name='categories'),
+    path('categories/<int:pk>',views.CategoryRetrieveAPIView.as_view(),name='post_by_categorie'),
+    path('categories/',views.CategoryListAPIView.as_view(),name='categories'),
     path('', include(router.urls))
 ]

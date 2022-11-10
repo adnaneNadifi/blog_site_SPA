@@ -1,8 +1,22 @@
 import axiosInterceptor from 'src/utils/axiosInterceptor';
 
-export const getArticles = () => {
+export const getArticles = (pageUrl:string|null) => {
+
+  let apiUrl = `/api/blog_posts/`;
+
+  if(pageUrl !== null){
+    apiUrl = pageUrl;
+  }
+
   return axiosInterceptor.get<API.ArticleData>(
-    '/api/blog_posts/',
+    apiUrl,
+  );
+};
+
+
+export const getArticle = (articleId:number) => {
+  return axiosInterceptor.get<API.Article>(
+    `api/blog_posts/${articleId}`,
   );
 };
 
@@ -11,3 +25,9 @@ export const getCategories = () => {
     '/api/categories/',
   );
 };
+
+export const getCategoryWithArticles = (categoryId: number) => {
+  return axiosInterceptor.get<API.CategoryWithArticles>(
+    `/api/categories/${categoryId}`,
+  )
+}

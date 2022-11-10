@@ -20,3 +20,20 @@ class BlogPostSerializer(serializers.ModelSerializer):
             'categories'
         ]
 
+
+class BlogPostByCategorySerializer(serializers.ModelSerializer):
+    posts = BlogPostSerializer(many=True)
+    #aaa = serializers.SerializerMethodField()
+
+    #def get_aaa(self, obj):
+    #    return 'aaa'
+
+    class Meta:
+        model = Category
+  
+        fields = [
+            'id',
+            'title',
+            'posts',
+            #'aaa',
+        ]

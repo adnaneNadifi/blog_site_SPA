@@ -4,7 +4,6 @@
     Loading..
   </div>
   <q-layout v-else view="lHh Lpr lFf">
-    <MainNavbar/>
     <topic-navbar></topic-navbar>
     <q-page-container>
       <router-view />

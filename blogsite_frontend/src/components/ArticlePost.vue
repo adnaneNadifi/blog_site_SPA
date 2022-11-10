@@ -9,11 +9,10 @@
                         <a v-for="category in  article.categories" :key="category.id" href="#" class="text-blue-700 text-sm font-bold uppercase pr-4">{{category.title}}</a>
                     </div>
                     
-                    <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">{{article.title}}</a>
-                    <router-link @click="store.getPostAction(article.id)" :to="{name:'article',params:{id:article.id}}">to article page</router-link>
-                    <a href="#" class="mb-2 line-clamp-2">{{article.content}}</a>
+                    <a class="text-3xl font-bold hover:text-gray-700 pb-4">{{article.title}}</a>
+                    <a class="mb-2 line-clamp-2">{{article.content}}</a>
+                    <router-link class="uppercase text-gray-800 hover:text-black" :to="{name:'article',params:{id:article.id}}">Continue Reading </router-link>
                     
-                    <a href="#" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
                 </div>
             </article>
 </template>
