@@ -5,7 +5,7 @@
   </div>
   <q-layout v-else view="lHh Lpr lFf">
     <topic-navbar></topic-navbar>
-    <q-page-container>
+    <q-page-container class="flex justify-center">
       <router-view />
     </q-page-container>
     <MainFooter/>

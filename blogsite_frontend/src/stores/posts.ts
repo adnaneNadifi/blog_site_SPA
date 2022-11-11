@@ -66,7 +66,7 @@ export const usePostsStore = defineStore('posts', {
     },
 
     async getCategoriesAction() {
-      const response = await getCategories()
+      const response = await getCategories(null)
           .then((response) => {
             this.categories =  response.data
           })

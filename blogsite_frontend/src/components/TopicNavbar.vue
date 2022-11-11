@@ -9,10 +9,15 @@
                         </button>
                         
                     </router-link>
-
-                    <router-link  v-for="categorie in postsStore.categories.results" :key="categorie.id" :to="{name:'category',params:{id:categorie.id}}">
+                    <router-link  :to="{name:'addCategory'}">
                         <button class="uppercase text-gray-800 hover:text-black  p-4">
-                            {{categorie.title}}
+                            Add category
+                        </button>
+                        
+                    </router-link>
+                    <router-link  :to="{name:'allCategories'}">
+                        <button class="uppercase text-gray-800 hover:text-black  p-4">
+                            All categories
                         </button>
                         
                     </router-link>

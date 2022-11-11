@@ -1,4 +1,10 @@
 declare namespace API {
+
+    type CategoryForm ={
+        title:string|null;
+    }
+
+
     type CategoryWithArticles = {
         id:number
         title:string;
