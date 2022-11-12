@@ -3,7 +3,11 @@ declare namespace API {
     type CategoryForm ={
         title:string|null;
     }
-
+    type ArticleForm={
+        title:string|null;
+        content:string|null;
+        category:Category;
+    }
 
     type CategoryWithArticles = {
         id:number

@@ -19,6 +19,12 @@ export const getArticle = (articleId:number) => {
   );
 };
 
+export const addArticle = (article:object)=>{
+  return axiosInterceptor.post<API.Article>(
+    `api/blog_posts/`,article
+  );
+}
+
 export const getCategories = (pageUrl:string|null) => {
   
   let  apiUrl ='/api/categories/'
@@ -30,6 +36,12 @@ export const getCategories = (pageUrl:string|null) => {
     apiUrl,
   );
 };
+
+export const getAllCategories = ()=>{
+  return axiosInterceptor.get<API.Category[]>(
+    `api/all_categories/`,
+  );
+}
 
 export const getCategoryWithArticles = (categoryId: number) => {
   return axiosInterceptor.get<API.CategoryWithArticles>(
@@ -48,7 +60,6 @@ export const deletCategory = (id:number) => {
     `/api/categories_delete/${id}`,
   );
 };
-
 
 export const updateCategory = (id:number,category:object) => {
   return axiosInterceptor.patch(

@@ -3,7 +3,6 @@
                 <a href="#" class="hover:opacity-75">
                     <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1">
                 </a>
-                <p>id : {{article.id}}</p>
                 <div class="bg-white flex flex-col justify-start p-6">
                     <div class="flex-col pb-3">
                         <a v-for="category in  article.categories" :key="category.id" href="#" class="text-blue-700 text-sm font-bold uppercase pr-4">{{category.title}}</a>

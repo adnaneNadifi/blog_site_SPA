@@ -1,9 +1,6 @@
 <template>
 
-  <div v-if="isLoading">
-    Loading..
-  </div>
-  <q-layout v-else view="lHh Lpr lFf">
+  <q-layout  view="lHh Lpr lFf">
     <topic-navbar></topic-navbar>
     <q-page-container class="flex justify-center">
       <router-view />
@@ -76,12 +73,6 @@ function toggleLeftDrawer() {
 
 const postsStore = usePostsStore()
 
-
-onBeforeMount( () => {
-    postsStore.getPostsAction().then(()=>{
-      isLoading.value = false;
-    });
-})
 
 
 </script>

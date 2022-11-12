@@ -12,6 +12,7 @@ urlpatterns = [
     path('categories_update/<int:pk>',views.CategoryUpdateAPIView.as_view(),name='update_category'),
     path('categories_delete/<int:pk>',views.CategoryDestroyAPIView.as_view(),name='delete_category'),
     path('categories/',views.CategoryListAPIView.as_view(),name='categories'),
-    path('add_category/',views.CategoryAddAPIView.as_view(),name='categories'),
+    path('all_categories/',views.AllCategoriesAPIView.as_view(),name='all_categories'),
+    path('add_category/',views.CategoryAddAPIView.as_view(),name='add_categories'),
     path('', include(router.urls))
 ]

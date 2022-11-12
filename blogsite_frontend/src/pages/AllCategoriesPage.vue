@@ -75,9 +75,7 @@ onBeforeMount(
 )
 
 function validate () {
-    console.log('my form before');
-    
-    console.log(myForm.value);
+  
     
     myForm.value.validate().then(success => {
         if (success) {
@@ -111,7 +109,6 @@ function reset () {
     console.log('form reset');
     
     }
-
 
 function loadmore(){
         getCategories(next_page.value).then((res)=>{

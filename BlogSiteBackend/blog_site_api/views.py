@@ -5,15 +5,27 @@ from rest_framework import generics
 from rest_framework.pagination import PageNumberPagination
 # Create your views here.
 
+class BlogPostsListPagination(PageNumberPagination):
+    page_size = 1
+    page_size_query_param = 'page_size'
 
 class BlogPostViewSet(viewsets.ModelViewSet):
-  serializer_class = BlogPostSerializer
-  queryset = BlogPost.objects.all()
-  
 
+      serializer_class = BlogPostSerializer
+      queryset = BlogPost.objects.all()
+      pagination_class = BlogPostsListPagination
+
+  
+#category list
 class CategoryListPagination(PageNumberPagination):
     page_size = 4
     page_size_query_param = 'page_size'
+
+#get_allcategories
+class AllCategoriesAPIView(generics.ListAPIView):
+  pagination_class = None
+  serializer_class = CategorySerialiser
+  queryset = Category.objects.all()
 
 
 class CategoryListAPIView(generics.ListAPIView):

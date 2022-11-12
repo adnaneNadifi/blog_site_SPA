@@ -29,21 +29,24 @@ export const usePostsStore = defineStore('posts', {
         next:null,
         results : [],
       } as API.ArticleData,
+      first_time_load:true,
       categories:{} as API.CategoryData
     };
   },
 
   actions: {
     async getPostsAction(getNextPage=false) {
-
+      this.first_time_load = false
       let pageUrl = null;
+
       if (getNextPage){
         pageUrl = this.posts.next;
+        
       }
 
       const response = await getArticles(pageUrl)
           .then((response) => {
-            this.posts =  {
+            this.posts=  {
               ...this.posts,
               next: response.data.next,
               previous: response.data.previous,
@@ -56,6 +59,7 @@ export const usePostsStore = defineStore('posts', {
           .catch((err) => {
             console.log(err);
           })
+          
       return response;
     },
 
