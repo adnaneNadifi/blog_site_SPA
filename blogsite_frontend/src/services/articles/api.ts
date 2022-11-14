@@ -66,3 +66,9 @@ export const updateCategory = (id:number,category:object) => {
     `/api/categories_update/${id}`,category
   );
 };
+
+export const addComment = (comment:API.CommentForm) => {
+  return axiosInterceptor.post<API.Comment>(
+    '/api/posts_comment/',comment
+  );
+}

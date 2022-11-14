@@ -10,8 +10,8 @@ declare namespace API {
   };
 
   type CommentForm = {
-    id: number;
     comment: string;
+    post: number;
   };
 
   type CategoryWithArticles = {
@@ -41,6 +41,7 @@ declare namespace API {
   };
 
   type Comment = {
+    id: number;
     comment: string;
   };
 

@@ -108,11 +108,11 @@ onBeforeMount(async () => {
 });
 
 const loadNextPage = () => {
-  if (postsStore.port default {
-
-}tPostsAction(true);
-  }
-};
+    if(postsStore.posts.next !== null){
+        postsStore.getPostsAction(true);
+    }
+    
+}
 
 function validateArticleForm() {
   addArticleForm.value.validate().then((success) => {

@@ -26,8 +26,9 @@
           <p>{{ article.content }}</p>
         </div>
       </article>
-      <AddCommentForm />
+      <AddCommentForm :post_id="article.id" />
       <CommentSection :comments="article.comments" />
+      {{article.comments}}
     </section>
 
     <SideBar />
@@ -44,7 +45,6 @@ import { getArticle } from 'src/services/articles/api';
 
 const route = useRoute();
 const article = ref({} as API.Article);
-
 onBeforeMount(async () => {
   const id = parseInt(route.params.id as string);
   await getArticle(id).then((res) => {
