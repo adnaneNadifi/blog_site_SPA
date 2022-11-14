@@ -21,5 +21,26 @@ class BlogPost(models.Model):
     content = models.TextField()
     categories = models.ManyToManyField(Category)
 
+    @property
+    def display_categories(self):
+        return self.categories
+
+    """
+    @property
+    def comments(self):
+        return BlogPostComment.objects.filter(post__pk=self.pk)
+    """
+
+
     def __str__(self):
         return self.title
+
+
+class BlogPostComment(models.Model):
+    comment = models.TextField()
+    post = models.ForeignKey(BlogPost,on_delete= models.CASCADE)
+
+    def __str__(self):
+        return self.comment
+
+

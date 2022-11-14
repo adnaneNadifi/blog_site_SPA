@@ -5,6 +5,7 @@ from blog_site_api import views
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
 router.register(r'blog_posts', views.BlogPostViewSet, basename="blogsite_api")
+router.register(r'posts_comment',views.CommentViewSet, basename="post_comment_api")
 
 # The API URLs are now determined automatically by the router.
 urlpatterns = [

@@ -1,46 +1,53 @@
 declare namespace API {
+  type CategoryForm = {
+    title: string | null;
+  };
 
-    type CategoryForm ={
-        title:string|null;
-    }
-    type ArticleForm={
-        title:string|null;
-        content:string|null;
-        category:Category;
-    }
+  type ArticleForm = {
+    title: string | null;
+    content: string | null;
+    categories: number[];
+  };
 
-    type CategoryWithArticles = {
-        id:number
-        title:string;
-        posts: Article
-    };
+  type CommentForm = {
+    id: number;
+    comment: string;
+  };
 
-    type Category = {
-        id:number
-        title:string;
-    };
+  type CategoryWithArticles = {
+    id: number;
+    title: string;
+    posts: Article;
+  };
 
-    type Article = {
-        id:number,
-        title:string;
-        content:string;
-        categories:Category[];
-    };
+  type Category = {
+    id: number;
+    title: string;
+  };
 
-    type ArticleData = {
-        count:number,
-        next:string|null,
-        previous:string|null,
-        results:Article[]
-    }
+  type Article = {
+    id: number;
+    title: string;
+    content: string;
+    display_categories: Category[];
+    comments: Comment[];
+  };
 
+  type ArticleData = {
+    count: number;
+    next: string | null;
+    previous: string | null;
+    results: Article[];
+  };
 
-    type CategoryData = {
-        count:number,
-        next:string|null,
-        previous:string|null,
-        results:Category[]
-    }
-  }
-  
-  
+  type Comment = {
+    comment: string;
+  };
+
+  type CategoryData = {
+    count: number;
+    next: string | null;
+    previous: string | null;
+    results: Category[];
+  };
+}
